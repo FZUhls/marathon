@@ -7,15 +7,15 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="发布失误招领信息" />
+            android:title="发布失物信息" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="打开失物招领地图" />
+            android:title="发布招领信息" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="查看我已发布的信息" />
+            android:title="打开失物招领地图" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"

@@ -1,12 +1,15 @@
 package com.example.henry.marathon.Activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
@@ -33,6 +36,8 @@ public class MapActivity extends AppCompatActivity  {
     public LocationClient mLocationClient;
     private MapView mapView;
     private BaiduMap baiduMap;
+    private LatLng ptCenter;
+    private FloatingActionButton fab;
     private String TAG = "BAIDUMAP";
     private boolean isFirstLocate = true;
     private MyLocationListener myLocationListener = new MyLocationListener();
@@ -43,6 +48,18 @@ public class MapActivity extends AppCompatActivity  {
         mLocationClient = new LocationClient(getApplicationContext());
         mLocationClient.registerLocationListener(myLocationListener);//Todo
         setContentView(R.layout.activity_map);
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentback = new Intent();
+                intentback.putExtra("latitude",ptCenter.latitude);
+                intentback.putExtra("longitude",ptCenter.longitude);
+                intentback.putExtra("data_return","it is right");
+                setResult(RESULT_OK,intentback);
+                finish();
+            }
+        });
         permission();
         mapView= (MapView)findViewById(R.id.bdMap);
         baiduMap = mapView.getMap();
@@ -65,11 +82,10 @@ public class MapActivity extends AppCompatActivity  {
 
             @Override
             public void onMapStatusChangeFinish(MapStatus mapStatus) {
-                LatLng ptCenter = baiduMap.getMapStatus().target; //获取地图中心点坐标
+                ptCenter = baiduMap.getMapStatus().target; //获取地图中心点坐标
                 Double latitude = ptCenter.latitude;
                 Double longitude = ptCenter.longitude;
                 Log.d(TAG, "onMapStatusChangeFinish: "+latitude+"\n"+longitude);
-
             }
         });
     }
@@ -129,6 +145,7 @@ public class MapActivity extends AppCompatActivity  {
             }
         }
     }
+
 
     @Override
     protected void onResume() {

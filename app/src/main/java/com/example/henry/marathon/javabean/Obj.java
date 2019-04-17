@@ -2,6 +2,8 @@ package com.example.henry.marathon.javabean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.math.BigInteger;
+
 public class Obj {
     @SerializedName("obj")
     protected String name;
@@ -11,7 +13,7 @@ public class Obj {
     @SerializedName("telephone")
     protected String person_tel;
     @SerializedName("timedesc")
-    protected int date;
+    protected BigInteger date;
     @SerializedName("objdesc")
     protected String describe;
     @SerializedName("realname")
@@ -48,10 +50,10 @@ public class Obj {
     public void setPerson_tel(String person_tel) {
         this.person_tel = person_tel;
     }
-    public int getDate() {
+    public BigInteger getDate() {
         return date;
     }
-    public void setDate(int date) {
+    public void setDate(BigInteger date) {
         this.date = date;
     }
     public String getDescribe() {

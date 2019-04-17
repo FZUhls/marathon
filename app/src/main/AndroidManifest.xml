@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.henry.marathon">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -15,11 +16,13 @@
 
     <application
         android:allowBackup="true"
+        android:appComponentFactory="1"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:appComponentFactory">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="pOcGzQfWIT4DnI3yQ6MwMCkWbIhPPVn0" />
@@ -36,7 +39,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.MapActivity" />
+        <activity
+            android:name=".Activity.MapActivity"
+            android:windowSoftInputMode="adjustResize" />
 
         <service
             android:name="com.baidu.location.f"
@@ -45,9 +50,10 @@
 
         <activity android:name=".Activity.form" />
         <activity
-            android:label="输入"
             android:name=".Activity.EditActivity"
-            ></activity>
+            android:label="输入"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".Activity.detial"></activity>
     </application>
 
 </manifest>

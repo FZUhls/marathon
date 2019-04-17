@@ -39,12 +39,16 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.ViewHolder> {
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+
         Obj temp = itemList.get(position);
+        int year = temp.getDate().intValue()/10000;
+        int month = temp.getDate().intValue()%10000/100;
+        int day = temp.getDate().intValue()%100;
         viewHolder.ojbname.setText(temp.getName());
         viewHolder.person_name.setText(temp.getPerson_name());
         viewHolder.person_tel.setText(temp.getPerson_tel());
-        viewHolder.time.setText(String.valueOf(temp.getDate()));
-        viewHolder.describe.setText(temp.getDescribe());
+        viewHolder.time.setText(String.valueOf(year)+"/"+month+"/"+day);
+        viewHolder.describe.setText(temp.getDescribe()+","+temp.getLocationdesc());
     }
     @Override
     public int getItemCount() {

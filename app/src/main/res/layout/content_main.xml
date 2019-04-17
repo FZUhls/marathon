@@ -7,26 +7,22 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activity.MainActivity"
     tools:showIn="@layout/app_bar_main">
-    <TextView
-        android:id="@+id/head_text"
-        android:gravity="center"
-        android:text="所有失物招领信息"
-        android:textSize="20dp"
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <View
-        android:id="@+id/aline"
-        android:layout_below="@id/head_text"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:background="@color/colorSecondaryText"
-        android:layout_height="1dp"/>
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/all_recyclerView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@id/aline">
-</android.support.v7.widget.RecyclerView>
-
-
-
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_menu"
+        />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigationView"
+        />
 </RelativeLayout>
